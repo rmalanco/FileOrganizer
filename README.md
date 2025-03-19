@@ -5,17 +5,11 @@ File Organizer es una aplicación de escritorio desarrollada en **VB.NET** utili
 ## 📌 Características Principales
 
 ✅ **Selección de Carpeta**: Permite seleccionar la carpeta a organizar.
-
 ✅ **Clasificación Automática**: Ordena archivos en subcarpetas según su tipo.
-
 ✅ **Barra de Progreso**: Indica el estado de la organización.
-
 ✅ **Gráfico de Distribución**: Usa **LiveCharts** para mostrar el porcentaje de archivos por tipo.
-
 ✅ **Opciones Avanzadas**: Permite eliminar duplicados.
-
 ✅ **Historial de Eventos**: Guarda un registro de operaciones en un log.
-
 ✅ **Interfaz Personalizable**: Compatible con temas oscuros y claros.
 
 ---
