@@ -40,8 +40,8 @@ Partial Class MainForm
         Me.MaterialLabel3 = New MaterialSkin.Controls.MaterialLabel()
         Me.lblVersion = New MaterialSkin.Controls.MaterialLabel()
         Me.tbLog = New System.Windows.Forms.TabPage()
-        Me.MaterialCheckbox1 = New MaterialSkin.Controls.MaterialCheckbox()
         Me.txtLog = New System.Windows.Forms.TextBox()
+        Me.MaterialCheckbox1 = New MaterialSkin.Controls.MaterialCheckbox()
         Me.tcPrincipal.SuspendLayout()
         Me.tpMain.SuspendLayout()
         Me.tbAbout.SuspendLayout()
@@ -289,13 +289,13 @@ Partial Class MainForm
         '
         Me.lblVersion.AutoSize = True
         Me.lblVersion.Depth = 0
-        Me.lblVersion.Font = New System.Drawing.Font("Roboto", 24.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
+        Me.lblVersion.Font = New System.Drawing.Font("Roboto", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
         Me.lblVersion.Location = New System.Drawing.Point(16, 29)
         Me.lblVersion.MouseState = MaterialSkin.MouseState.HOVER
         Me.lblVersion.Name = "lblVersion"
         Me.lblVersion.Size = New System.Drawing.Size(93, 19)
         Me.lblVersion.TabIndex = 0
-        Me.lblVersion.Text = "Versión 1.0.0"
+        Me.lblVersion.Text = "Versión 1.0.1"
         '
         'tbLog
         '
@@ -307,6 +307,18 @@ Partial Class MainForm
         Me.tbLog.TabIndex = 2
         Me.tbLog.Text = "Log"
         Me.tbLog.UseVisualStyleBackColor = True
+        '
+        'txtLog
+        '
+        Me.txtLog.Location = New System.Drawing.Point(6, 6)
+        Me.txtLog.Multiline = True
+        Me.txtLog.Name = "txtLog"
+        Me.txtLog.ReadOnly = True
+        Me.txtLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.txtLog.Size = New System.Drawing.Size(923, 495)
+        Me.txtLog.TabIndex = 0
+        Me.txtLog.TabStop = False
+        Me.txtLog.WordWrap = False
         '
         'MaterialCheckbox1
         '
@@ -320,18 +332,6 @@ Partial Class MainForm
         Me.MaterialCheckbox1.Ripple = True
         Me.MaterialCheckbox1.Size = New System.Drawing.Size(104, 37)
         Me.MaterialCheckbox1.TabIndex = 0
-        '
-        'txtLog
-        '
-        Me.txtLog.Location = New System.Drawing.Point(6, 6)
-        Me.txtLog.Multiline = True
-        Me.txtLog.Name = "txtLog"
-        Me.txtLog.ReadOnly = True
-        Me.txtLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.txtLog.Size = New System.Drawing.Size(923, 495)
-        Me.txtLog.TabIndex = 0
-        Me.txtLog.TabStop = False
-        Me.txtLog.WordWrap = False
         '
         'MainForm
         '
