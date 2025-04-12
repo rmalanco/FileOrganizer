@@ -16,13 +16,11 @@ Public Class ReportService
             Dim distribucion As New Dictionary(Of String, Double)
 
             If Not Directory.Exists(rutaCarpeta) Then
-                messageError = "La carpeta especificada no existe."
                 Return distribucion
             End If
 
-            Dim archivos = Directory.GetFiles(rutaCarpeta, "*.*", SearchOption.AllDirectories)
+            Dim archivos = Directory.GetFiles(rutaCarpeta, "*.*", SearchOption.TopDirectoryOnly)
             If archivos.Length = 0 Then
-                messageError = "No se encontraron archivos en la carpeta especificada."
                 Return distribucion
             End If
 

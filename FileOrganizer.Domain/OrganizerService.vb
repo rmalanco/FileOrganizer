@@ -12,22 +12,28 @@ Public Class OrganizerService
     ''' <param name="ruta">The path of the directory to organize.</param>
     ''' <param name="eliminarDuplicados">If set to <c>true</c>, duplicate files will be deleted.</param>
     Public Shared Sub OrganizarArchivos(ruta As String, eliminarDuplicados As Boolean)
-        Dim nombreArchivo As String = Path.GetFileName(ruta)
-        Dim rutaArchivo As String = Path.GetDirectoryName(ruta)
+        Dim rutaArchivo = Path.GetDirectoryName(ruta)
 
-        If Not Directory.Exists(rutaArchivo) Then Exit Sub
+        If String.IsNullOrEmpty(rutaArchivo) OrElse Not Directory.Exists(rutaArchivo) Then
+            Return
+        End If
 
         Dim archivos = Directory.GetFiles(rutaArchivo)
+        If archivos.Length = 0 Then
+            Return
+        End If
 
         For Each archivo In archivos
-            Dim extension = Path.GetExtension(archivo).ToLower()
-            Dim nuevaCarpeta As String = FileHelper.ObtenerCarpetaDestino(extension, rutaArchivo)
+            Try
+                Dim extension = Path.GetExtension(archivo).ToLower()
+                Dim nuevaCarpeta = FileHelper.ObtenerCarpetaDestino(extension, rutaArchivo)
 
-            ' Crear la carpeta si no existe
-            Directory.CreateDirectory(nuevaCarpeta)
+                Directory.CreateDirectory(nuevaCarpeta)
 
-            ' Mover el archivo a su nueva ubicación
-            MoverArchivo(archivo, nuevaCarpeta, eliminarDuplicados)
+                MoverArchivo(archivo, nuevaCarpeta, eliminarDuplicados)
+            Catch ex As Exception
+                Logger.Log($"Error al procesar el archivo '{archivo}': {ex.Message}")
+            End Try
         Next
     End Sub
 
@@ -44,8 +50,16 @@ Public Class OrganizerService
             File.Delete(archivo)
             Logger.Log($"Archivo duplicado eliminado: {archivo}")
         Else
-            File.Move(archivo, nuevoArchivo)
-            Logger.Log($"Archivo movido: {archivo} → {nuevoArchivo}")
+            Try
+                If File.Exists(nuevoArchivo) Then
+                    File.Delete(nuevoArchivo)
+                End If
+
+                File.Move(archivo, nuevoArchivo)
+                Logger.Log($"Archivo movido: {archivo} → {nuevoArchivo}")
+            Catch ex As IOException
+                Logger.Log($"Error al mover el archivo '{archivo}': {ex.Message}")
+            End Try
         End If
     End Sub
 
